@@ -54,7 +54,7 @@ for region in combination_regions:
     p_value= []
     p_value_permutation.append(p_value)
     for i in range(8650):
-        permutation = PermutationTest(dt_groupped[region[0]][i], dt_groupped[region[1]][i], stat=mean_gt, n_perm=9999)
+        permutation = PermutationTest(dt_groupped[region[0]][i], dt_groupped[region[1]][i], stat=variance_gt, n_perm=99999)
         p_value.append(permutation.p_value())
 
 names = []
@@ -66,4 +66,4 @@ for i in list(combinations(regions,2)):
 permutation_df = pd.DataFrame(p_value_permutation)
 
 permutation_df = permutation_df.set_axis(names)
-permutation_df.to_csv("mean_permutation_results.csv")
+permutation_df.to_csv("permutation_results.csv")
