@@ -129,7 +129,7 @@ for cnv in chm13_np:
                 #leng_dqna = (cnv_q[3]-cnv_q[2])
                 #leng_cnvnator = (cnv_c[2]-cnv_c[1])
                 #if (leng_dqna/leng_cnvnator)>0.6:
-                overlapped.append([cnv[0], gene[4], cnv[2], cnv[3], gene[1], gene[2], cnv[4], cnv[6]])
+                overlapped.append([cnv[0], gene[3], cnv[2], cnv[3], gene[1], gene[2], cnv[4], cnv[6]])
                     #overlapped.append(cnv_q)
             # SUDMANT DATA CNVS in QDNASEQ CNVs(QDNASEQ bigger than SUDMANT DATA)
             
@@ -137,7 +137,7 @@ for cnv in chm13_np:
                 #leng_dq/na = (cnv_q[3]-cnv_q[2])
                 #leng_cnvnator = (cnv_c[2]-cnv_c[1])
                 #if (leng_cnvnator/leng_dqna)>0.6:
-                overlapped.append([cnv[0], gene[4], cnv[2], cnv[3], gene[1], gene[2], cnv[4], cnv[6]])
+                overlapped.append([cnv[0], gene[3], cnv[2], cnv[3], gene[1], gene[2], cnv[4], cnv[6]])
                     #overlapped.append([cnv_q, cnv_c])
                     #overlapped.append(cnv_q)
 
@@ -147,6 +147,6 @@ chm13 = pd.DataFrame(overlapped)
 ## Rename columns
 chm13.columns = ['SAMPLE', 'CHR', 'START', 'END', 'START_GENE', 'END_GENE', 'SCORE', 'TYPE']
 
-chm13.to_csv('../data/chm13_gene_regions.csv')
+chm13.to_csv('.../chm13_gene_regions.csv')
 
 
