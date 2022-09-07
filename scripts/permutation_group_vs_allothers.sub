@@ -6,8 +6,8 @@
 #SBATCH --mem=120G
 #SBATCH --time=0-240:00:00 #10 days
 
-#SBATCH --output=permutation_%j.stdout
-#SBATCH --job-name=permutation
+#SBATCH --output=permut_allothers_%j.stdout
+#SBATCH --job-name=permut_allothers
 #SBATCH --export=ALL
 
 whoami
@@ -15,4 +15,4 @@ whoami
 #ad modules or conda environments here
 module load anaconda3
 
-python permutation_group_vs_allothers.py
+python permutation_group_vs_allothers_2.py
