@@ -147,6 +147,6 @@ chm13 = pd.DataFrame(overlapped)
 ## Rename columns
 chm13.columns = ['SAMPLE', 'CHR', 'START', 'END', 'START_GENE', 'END_GENE', 'SCORE', 'TYPE']
 
-chm13.to_csv('.../chm13_gene_regions.csv')
+chm13.to_csv('../data/chm13_gene_regions.csv')
 
 
