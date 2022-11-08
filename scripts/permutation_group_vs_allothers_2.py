@@ -14,7 +14,7 @@ from scipy import stats
 data = pd.read_csv("../data/cnvator_data_sudmant_overlapped.csv")
 
 
-anotation = pd.read_csv('/branchinecta/jbazanwilliamson/SGDP_anotation.csv', sep=',', encoding='latin-1',  index_col=1)
+anotation = pd.read_csv('../data/SGDP_anotation.csv', sep=',', encoding='latin-1',  index_col=1)
 
 
 cnv = data.pivot_table(index=["Chr", "Start", "End"], 
@@ -39,9 +39,9 @@ def vst_gt(x, y):
     vx = np.var(x, axis=0)
     vy = np.var(y, axis=0)
     ########### N =  numbers of individuals sampled from population each cnv ##############    
-    nx = x.sum()
+    nx = len(x)
     
-    ny = y.sum()
+    ny = len(y)
     
     ######## Vt = total variance across all individuals of the pair of populations ########
     #vt = pd.concat([x,y]).var()
@@ -88,4 +88,4 @@ for region in regions:
 permutation_df = pd.DataFrame(p_value_permutation)
 
 permutation_df = permutation_df.set_axis(regions)
-permutation_df.to_csv("../data/permutation_results_group_vs_allothers.csv")
+permutation_df.to_csv("../permutation_results_group_vs_allothers.csv")
