@@ -1,1 +1,3 @@
 jbazanwilliamson
+permutation.py:74: RuntimeWarning: invalid value encountered in double_scalars
+  vst = (vt-vs)/vt
