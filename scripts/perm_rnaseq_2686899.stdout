@@ -1,1 +1,6 @@
 jbazanwilliamson
+/branchinecta/jbazanwilliamson/cnv_analysis/cnv_sgdp/scripts/vst_function.py:44: RuntimeWarning: invalid value encountered in double_scalars
+  vst = (vt-vs)/vt
+(58103, 41)
+(42453, 41)
+(32795, 41)
