@@ -45,3 +45,24 @@ def vst(
     
         
     return(vst)
+
+
+def dmean(
+
+):
+    """
+    Dmean for two groups
+    x(object): Values from group A
+    y(object): Values from group B
+    """
+    ####### Groupby regions #######
+    ######## M = median within-populatio ######
+    mx = np.median(x, axis=0)
+    my = np.median(y, axis=0)
+    
+    m = mx - my
+    m = abs(m)
+    
+    return(m)
+    
+    
