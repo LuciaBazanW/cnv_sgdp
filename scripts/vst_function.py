@@ -48,6 +48,8 @@ def vst(
 
 
 def dmean(
+    x=None, 
+    y=None
 
 ):
     """
@@ -57,8 +59,8 @@ def dmean(
     """
     ####### Groupby regions #######
     ######## M = median within-populatio ######
-    mx = np.median(x, axis=0)
-    my = np.median(y, axis=0)
+    mx = np.mean(x, axis=0)
+    my = np.mean(y, axis=0)
     
     m = mx - my
     m = abs(m)
