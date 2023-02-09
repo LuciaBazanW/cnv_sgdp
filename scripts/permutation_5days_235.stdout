@@ -1,0 +1,5 @@
+jbazanwilliamson
+Traceback (most recent call last):
+  File "permutation_chm13_vst_all_cnvs.py", line 111, in <module>
+    dt = features.merge(cnvs, left_index=True, right_index=True)
+NameError: name 'features' is not defined

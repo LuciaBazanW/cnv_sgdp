@@ -26,6 +26,7 @@ ids_hg19 = pd.DataFrame()
 ids_hg19['SAMPLE'] = anotation['3-Illumina_ID']
 ids_hg19['REGION'] = anotation['10-Region']
 
+
 def read_file(file):
     """
     Read a file to a dict of lists.
@@ -108,6 +109,11 @@ cnvs = input_vst.iloc[:,3:284]
 cnvs = cnvs.T
 cnvs = cnvs.fillna(2)
 
+
+features = ids_hg19.set_index('SAMPLE').merge(cnvs, left_index=True, right_index=True)
+features = features.loc[:,['REGION']]
+features = features.sort_index()
+
 dt = features.merge(cnvs, left_index=True, right_index=True)
 
 ####### Groupby regions #######
@@ -138,17 +144,20 @@ for region in combination_regions:
 p_value_permutation = []
 
 combination_regions = list(combinations([0,1,2,3,4,5,6],2))
-for region in combination_regions:
-    p_value= []
-    p_value_permutation.append(p_value)
-
-    for i in range(1014257):
-        permutation = PermutationTest(dt_groupped[region[0]][i], dt_groupped[region[1]][i], stat=vst, n_perm=9999)#mean_gt
-        p_value.append(permutation.p_value())
 
 
-
-permutation_vst_chm13_deletions_gene_regions = pd.DataFrame(p_value_permutation).set_axis(combination_names)
-permutation_vst_chm13_deletions_gene_regions.to_csv('permutation_vst_chm13_all_cnvs.csv')
-permutation_vst_chm13_deletions_gene_regions
+def permutation():
+    p_value_permutation = []
+    combination_regions = list(combinations([0,1,2,3,4,5,6],2))
+        for region in combination_regions:
+            p_value= []
+            p_value_permutation.append(p_value)
+            
+            for i in range(1014257):
+                permutation = PermutationTest(dt_groupped[region[0]][i], dt_groupped[region[1]][i], stat=vst, n_perm=9999)#mean_gt
+                p_value.append(permutation.p_value())
+                
+    permutation_vst_chm13_deletions_gene_regions = pd.DataFrame(p_value_permutation).set_axis(combination_names)
+    permutation_vst_chm13_deletions_gene_regions.to_csv('permutation_vst_chm13_all_cnvs.csv')
+    permutation_vst_chm13_deletions_gene_regions
 
