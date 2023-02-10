@@ -1,5 +1,8 @@
 import numpy as np
 import pandas as pd
+import stattools.resampling as st 
+import itertools
+from mlxtend.evaluate import permutation_test
 
 
 def vst(
@@ -66,5 +69,26 @@ def dmean(
     m = abs(m)
     
     return(m)
+
+
+def permut(lenght_cnvs):
+    from itertools import combinations
+    from mlxtend.evaluate import permutation_test
+    p_value_permutation = []
+    combination_regions = list(combinations([0,1,2,3,4,5,6],2))
+    for region in combination_regions:
+        p_value= []
+        p_value_permutation.append(p_value)
+        for i in lenght_cnvs:    
+            permutation_analysis = permutation_test(dt_groupped[region[0]][i], dt_groupped[region[1]][i], method='approximate',
+                           num_rounds=10000,
+                           seed=0, 
+                          func= vst)#mean_gt
+            p_value.append(permutation_analysis.p_value())
+    permutation_vst_chm13_deletions_gene_regions = pd.DataFrame(p_value_permutation).set_axis(combination_names)
+
+    return permutation_vst_chm13_deletions_gene_regions
+    
+
     
     
