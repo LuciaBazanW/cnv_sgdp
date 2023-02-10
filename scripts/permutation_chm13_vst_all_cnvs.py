@@ -18,6 +18,7 @@ import biotite
 from pca_plot import *
 from vst_function import *
 from stattools.resampling import PermutationTest
+import multiprocessing
 
 ## Read and merge files 
 anotation = pd.read_csv('../data/SGDP_anotation.csv', sep=',', encoding='latin-1')
@@ -95,6 +96,7 @@ chm13['END'] = chm13['END'].astype(int)
 chm13['SCORE'] = chm13['SCORE'].astype(int)
 
 
+
 ## Keeping only samples that are on old cnvs
 chm13 = chm13.merge(ids_hg19, on=['SAMPLE'])
 
@@ -131,7 +133,7 @@ combination_names = []
 for i in list(combinations(regions,2)):
     combination_names.append(i[0]+str('-')+i[1])
 
-
+print("done with assembly data")
 ## VST for pair-population
 vst_dt = []
 
@@ -140,24 +142,36 @@ for region in combination_regions:
         statistic = vst((dt_groupped[region[0]]), (dt_groupped[region[1]]))
         vst_dt.append(statistic)
 
+
+print("done with vst")
 ## PERMUTATION #####
 p_value_permutation = []
 
 combination_regions = list(combinations([0,1,2,3,4,5,6],2))
 
 
-def permutation():
+def permutation(lenght_cnvs):
     p_value_permutation = []
     combination_regions = list(combinations([0,1,2,3,4,5,6],2))
-        for region in combination_regions:
-            p_value= []
-            p_value_permutation.append(p_value)
-            
-            for i in range(1014257):
-                permutation = PermutationTest(dt_groupped[region[0]][i], dt_groupped[region[1]][i], stat=vst, n_perm=9999)#mean_gt
-                p_value.append(permutation.p_value())
-                
+    for region in combination_regions:
+        p_value= []
+        p_value_permutation.append(p_value)
+        
+        for i in range(lenght_cnvs):
+            permutation = PermutationTest(dt_groupped[region[0]][i], dt_groupped[region[1]][i], stat=vst, n_perm=9999)#mean_gt
+            p_value.append(permutation.p_value())
     permutation_vst_chm13_deletions_gene_regions = pd.DataFrame(p_value_permutation).set_axis(combination_names)
-    permutation_vst_chm13_deletions_gene_regions.to_csv('permutation_vst_chm13_all_cnvs.csv')
-    permutation_vst_chm13_deletions_gene_regions
+
+    return permutation_vst_chm13_deletions_gene_regions
+    
+
+total_cnvs = 1014257
+
+# create a process pool that uses all cpus
+with multiprocessing.Pool() as pool:
+    for result in pool.map(permutation, total_cnvs):
+        result.to_csv('permutation_vst_chm13_all_cnvs.csv')
+
+#permutation_vst_chm13_deletions_gene_regions.to_csv('permutation_vst_chm13_all_cnvs.csv')
+    
 

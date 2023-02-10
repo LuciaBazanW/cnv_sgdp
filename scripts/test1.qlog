@@ -1,0 +1,15 @@
+jbazanwilliamson
+done with assembly data
+done with vst
+/opt/spack/opt/spack/linux-rhel8-icelake/gcc-8.4.1/anaconda3-2021.05-fmo625scqdt32etnaksoexe3rd6sea7j/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3700: FutureWarning: Dropping of nuisance columns in DataFrame reductions (with 'numeric_only=None') is deprecated; in a future version this will raise TypeError.  Select only valid columns before calling the reduction.
+  return var(axis=axis, dtype=dtype, out=out, ddof=ddof, **kwargs)
+/data/jbazanwilliamson/cnv_sgdp/scripts/vst_function.py:31: FutureWarning: Dropping of nuisance columns in DataFrame reductions (with 'numeric_only=None') is deprecated; in a future version this will raise TypeError.  Select only valid columns before calling the reduction.
+  vt = pd.concat([x,y]).var()
+Traceback (most recent call last):
+  File "permutation_chm13_vst_all_cnvs.py", line 172, in <module>
+    for result in pool.map(permutation, total_cnvs):
+  File "/opt/spack/opt/spack/linux-rhel8-icelake/gcc-8.4.1/anaconda3-2021.05-fmo625scqdt32etnaksoexe3rd6sea7j/lib/python3.8/multiprocessing/pool.py", line 364, in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+  File "/opt/spack/opt/spack/linux-rhel8-icelake/gcc-8.4.1/anaconda3-2021.05-fmo625scqdt32etnaksoexe3rd6sea7j/lib/python3.8/multiprocessing/pool.py", line 475, in _map_async
+    iterable = list(iterable)
+TypeError: 'int' object is not iterable
