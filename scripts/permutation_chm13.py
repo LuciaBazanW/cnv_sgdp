@@ -19,8 +19,6 @@ from Bio import Phylo
 import biotite
 from pca_plot import *
 from stattools.resampling import PermutationTest
-from matplotlib_venn import venn2
-from mlxtend.evaluate import permutation_test
 import vst_function
 
 
@@ -33,7 +31,7 @@ def permutation_chm13(lenght_cnvs):
     ids_hg19['REGION'] = anotation['10-Region']
     ids_hg19['COUNTRY'] = anotation['11-Country']
     
-    chm13 = pd.read_csv('/Users/luciabazan/Downloads/chm13_gene_regions.csv', index_col=0)
+    chm13 = pd.read_csv('/home/jbazanwilliamson/data/chm13_gene_regions.csv', index_col=0)
     chm13['LENGHT'] = chm13['END'] - chm13['START']
     chm13 = chm13.drop(columns=['START_GENE', 'END_GENE'])
     chm13 = chm13.drop_duplicates()
@@ -84,3 +82,7 @@ def permutation_chm13(lenght_cnvs):
     permutation_vst_chm13_deletions_gene_regions = pd.DataFrame(p_value_permutation).set_axis(combination_names)
 
     return permutation_vst_chm13_deletions_gene_regions
+
+results = permutation_chm13(range(10748))
+results.to_csv('permutation_chm13_gene_regions.csv')
+

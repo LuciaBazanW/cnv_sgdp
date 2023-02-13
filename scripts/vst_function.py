@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import stattools.resampling as st 
 import itertools
-from mlxtend.evaluate import permutation_test
 
 
 def vst(
