@@ -133,11 +133,11 @@ for cnv in chm13_np:
                     #overlapped.append(cnv_q)
             # SUDMANT DATA CNVS in QDNASEQ CNVs(QDNASEQ bigger than SUDMANT DATA)
             
-            if (cnv[2] <= gene[1] <= cnv[3]) or (cnv[2] <= gene[2] <= cnv[3]):
+            #if (cnv[2] <= gene[1] <= cnv[3]) or (cnv[2] <= gene[2] <= cnv[3]):
                 #leng_dq/na = (cnv_q[3]-cnv_q[2])
                 #leng_cnvnator = (cnv_c[2]-cnv_c[1])
                 #if (leng_cnvnator/leng_dqna)>0.6:
-                overlapped.append([cnv[0], gene[3], cnv[2], cnv[3], gene[1], gene[2], cnv[4], cnv[6]])
+             #   overlapped.append([cnv[0], gene[3], cnv[2], cnv[3], gene[1], gene[2], cnv[4], cnv[6]])
                     #overlapped.append([cnv_q, cnv_c])
                     #overlapped.append(cnv_q)
 
