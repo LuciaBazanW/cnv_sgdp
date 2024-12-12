@@ -23,9 +23,9 @@ Cleaned and prepared data for analysis
 
 ### 🧩 Scripts (`/scripts`)
 All analysis code, including code to produce figures or tables will be kept in script
-- **`data_preprocessing/`**: Script for data cleaning and preparation as visualization of Table 1 and Figure 1
+- **`data`**: Script for data cleaning and preparation as visualization of Table 1 and Figure 1
   - Data_processing_Fig1,6_table1
-- **`analysis/`**: Analysis scripts
+- **`analysis`**: Analysis scripts
   - Vst_PCA
  
 ### Figures (`/plots`)
