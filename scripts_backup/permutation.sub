@@ -1,0 +1,27 @@
+#!/bin/bash  
+#SBATCH --nodes=2  #asked for 1 node
+#SBATCH --ntasks=20 #asked for 20 cores
+#SBATCH --partition compute  #this job will submit to test partition
+#SBATCH -M merced # add this flag if you want to submit jobs to MERCED cluster
+#SBATCH --mem=110G  #this job is asked for 96G of total memory, use 0 if you want to use entire node memory
+# #SBATCH --constraint=ib # uncomment this line if you need access to nodes with IB connections
+# #SBATCH --gres=gpu:X # uncomment this line if you need GPU access, replace X with number of GPU you need
+# #SBATCH -w <selected_node> #uncomment this line if you want to select specific available node to run 
+#SBATCH --time=5-00:00:00 # 5 days 
+#SBATCH --output=permutation_all_regions.qlog  #the output information will put into test1.qlog file
+#SBATCH --job-name=permutation_all  #the job name
+#SBATCH --export=ALL
+
+# This submission file will run a simple set of commands. All stdout will
+# be captured in test1.qlog (as specified in the Slurm command --output above).
+# This job file uses a shared-memory parallel environment and requests 20
+# cores (--ntasks option) on a single node(--nodes option). For more info on this script, cat /usr/local/bin/merced_node_print.
+#  
+#  
+
+whoami
+
+#ad modules or conda environments here
+module load anaconda3
+
+python permutation_chm13.py

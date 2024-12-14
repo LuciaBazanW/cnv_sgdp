@@ -1,5 +1,0 @@
-jbazanwilliamson
-/opt/spack/opt/spack/linux-rhel8-icelake/gcc-8.4.1/anaconda3-2021.05-fmo625scqdt32etnaksoexe3rd6sea7j/lib/python3.8/site-packages/numpy/lib/arraysetops.py:583: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
-  mask |= (ar1 == a)
-/data/jbazanwilliamson/cnv_sgdp/scripts/vst_function.py:46: RuntimeWarning: invalid value encountered in double_scalars
-  vst = (vt-vs)/vt
