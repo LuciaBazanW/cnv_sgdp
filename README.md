@@ -23,10 +23,11 @@ Cleaned and prepared data for analysis
 
 ### 🧩 Scripts (`/scripts`)
 All analysis code, including code to produce figures or tables will be kept in script
-- **`data`**: Script for data cleaning and preparation as visualization of Table 1 and Figure 1
-  - Data_processing_Fig1,6_table1
+- **`data`**: 
+  - Data_processing_Fig1,6_table1: Script for data cleaning and preparation as visualization of Table 1 and Figure 1 & 6
+  - Table2: Code to generate Table 2. 
 - **`analysis`**: Analysis scripts
-  - Vst_PCA
+  - Vst_PCA contains code for Figure 3 & 5, and suplemental figures such as PCA
  
 ### Figures (`/plots`)
 Plots created for manuscript are in plots
