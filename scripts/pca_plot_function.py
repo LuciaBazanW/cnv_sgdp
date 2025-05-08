@@ -188,6 +188,7 @@ legend=None,
 # Define groups.
     
     import matplotlib
+    import statistics
     data = data.copy(deep=True)   
     data.set_index(
         factor,
