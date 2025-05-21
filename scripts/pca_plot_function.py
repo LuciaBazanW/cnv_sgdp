@@ -126,9 +126,11 @@ def define_color_properties():
     }
 
 
+
 def create_legend_elements(
 colors=None,
 labels=None,
+markers=None,
 ):
     """
     Creates custom elements for legend.
@@ -140,15 +142,18 @@ labels=None,
         (list<object>): elements for legend
     """
     import seaborn
+    import matplotlib
+    import statistics
     elements = []
     for index in range(len(labels)):
         element = matplotlib.lines.Line2D(
             [0],
             [0],
-            marker="o",
+            marker=markers[index],
             color=colors[index],
             label=labels[index],
             markerfacecolor=colors[index],
+            markeredgecolor='k',
             markersize=15,
         )
         elements.append(element)
